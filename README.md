@@ -29,12 +29,12 @@ This architecture allows the Watcher to stay private and valuable while the Main
 ### 📸 Screenshots
 
 **Main Trading Bot Dashboard**  
-(открывается в любом браузере):
+
 
 ![Main Bot Dashboard](BOT%20DAHSBOARD.png)
 
 **Private Watcher**  
-(анализирует рынок 15M и отправляет сигналы в Main Bot):
+(Analyzes 15m crypto market on polymarket and has a market ending time)
 
 ![Watcher 15M Crypto](WATCHER%2015M%20CRYPTO..png)
 
