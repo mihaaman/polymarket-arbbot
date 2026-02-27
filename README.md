@@ -1,6 +1,6 @@
 # polymarket-arbbot
 
-# Polymarket Trading Bot
+# Polymarket Trading Bot/ 15/5 minute arbitrage markets.
 
 **Professional automated trading system for Polymarket** with private market analysis backend and powerful execution frontend.
 
@@ -27,17 +27,9 @@ This architecture allows the Watcher to stay private and valuable while the Main
 - Full logging and performance reports
 
 ### 📸 Screenshots
+This is the Bots dashboard that can open in any of browsers:(BOT DAHSBOARD.png)
+This is the wtacher , that send data to the main bot:(WATCHER 15M CRYPTO..png)
 
-**Private Watcher** (market analysis):
-![Watcher Dashboard 1](images/watcher-1.png)
-![Watcher Signals](images/watcher-2.png)
-
-**Main Bot Dashboard** (execution + UI):
-![Main Bot UI 1](images/main-1.png)
-![Main Bot UI 2](images/main-2.png)
-![Main Bot Trading Screen](images/main-3.png)
-
-*(Скриншоты будут загружены в папку images ниже)*
 
 ### 🛠 Technologies (Main Bot)
 - Backend: Python / Node.js
