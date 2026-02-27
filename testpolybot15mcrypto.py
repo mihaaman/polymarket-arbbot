@@ -7,38 +7,15 @@ import requests
 from urllib.parse import urlparse, parse_qs
 from collections import deque
 
-# ===== КОНФИГУРАЦИЯ =====
 WATCHER_URL = "http://localhost:8000/api/data"
 PORT = 7070 
 STARTING_BALANCE = 50.0    
-TARGET_SUM = 0.94          
-LEG2_TIMEOUT_SEC = 60
 
-NEW_ROUND_BLOCK_SEC = 7    
 
-# Параметры стратегии DIP
-DIP_THRESHOLD = 0.15       
-MAX_HISTORY_TICKS = 600    
+-İ HAVE DELETED THİS PART BECAUSE İT USES MY OWN STRATTEGY-
 
-# ===== ДИНАМИЧЕСКАЯ СИСТЕМА КОМИССИЙ =====
-def get_fee(price, shares):
-    trade_value = price * shares
-    p = round(price, 2)
-    
-    # Сетка комиссий согласно вашим требованиям
-    if p <= 0.05 or p >= 0.95:
-        return trade_value * 0.00002 # 0.002%
-    elif p <= 0.15 or p >= 0.85:
-        return trade_value * 0.0020  # 0.20%
-    elif p <= 0.25 or p >= 0.75:
-        return trade_value * 0.0064  # 0.64%
-    elif (p >= 0.60 and p <= 0.70) or (p >= 0.30 and p <= 0.40):
-        return trade_value * 0.0140  # 1.40% (Новое окно для 2-й ноги)
-    else:
-        return trade_value * 0.0110  # 1.10%
 
-class BotState:
-    def __init__(self):
+
         self.is_running = False
         self.balance = STARTING_BALANCE
         self.net_profit = 0.0
@@ -113,35 +90,13 @@ def process_logic():
                                     elapsed = time.time() - t['ts']
                                     side2_price = down_p if t['side1'] == "UP" else up_p
                                     total_sum = t['price1'] + side2_price
+
+
                                     
-                                    if 0.10 < total_sum <= TARGET_SUM:
-                                        leg2_fee = get_fee(side2_price, t['shares'])
-                                        state.balance -= leg2_fee
-                                        state.net_profit -= leg2_fee
-                                        
-                                        raw_profit = (1.0 - total_sum) * t['shares']
-                                        state.pending_settlements.append({'profit': raw_profit, 'coin': coin, 'shares': t['shares']})
-                                        state.trade_logs.append(f"[{m_time}] [CAUGHT] {coin} 2nd Leg @ {side2_price}¢")
-                                        del state.active_trades[coin]
-                                    
-                                    elif elapsed > LEG2_TIMEOUT_SEC:
-                                        cur_exit = up_p if t['side1'] == "UP" else down_p
-                                        # Применяем комиссию при закрытии по тайм-ауту
-                                        exit_fee = get_fee(cur_exit, t['shares'])
-                                        pnl = ((cur_exit - t['price1']) * t['shares']) - exit_fee
-                                        
-                                        state.balance += pnl
-                                        state.net_profit += pnl
-                                        state.history.append({"msg": f"T-OUT: {coin}", "val": pnl, "type": "win" if pnl > 0 else "loss"})
-                                        state.trade_logs.append(f"[{m_time}] [TIMEOUT] {coin} {t['side1']} exit | PnL: ${pnl:+.2f} (Fee: ${exit_fee:.2f})")
-                                        del state.active_trades[coin]
-                                
-                                # --- ENTRY LOGIC WITH PRICE FILTER ---
-                                elif not is_last_minute and (time.time() - state.last_clear_ts) > NEW_ROUND_BLOCK_SEC:
-                                    locked_active = sum(t['shares'] * 1.0 for t in state.active_trades.values())
-                                    locked_pending = sum(p['shares'] * 1.0 for p in state.pending_settlements)
-                                    free_balance = state.balance - (locked_active + locked_pending)
-                                    
+-ALSO İ HAVE DELETED SOME PART FROM THERE BECAUSE İT USES MY OWN STRATTEGY-
+
+
+                      
                                     if free_balance >= (state.shares_per_trade * 2.0):
                                         # UP DIP ENTRY
                                         if up_p <= 0.30 or up_p >= 0.70: 
