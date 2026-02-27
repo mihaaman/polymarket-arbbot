@@ -27,8 +27,16 @@ This architecture allows the Watcher to stay private and valuable while the Main
 - Full logging and performance reports
 
 ### 📸 Screenshots
-This is the Bots dashboard that can open in any of browsers:(BOT DAHSBOARD.png)
-This is the wtacher , that send data to the main bot:(WATCHER 15M CRYPTO..png)
+
+**Main Trading Bot Dashboard**  
+(открывается в любом браузере):
+
+![Main Bot Dashboard](BOT%20DAHSBOARD.png)
+
+**Private Watcher**  
+(анализирует рынок 15M и отправляет сигналы в Main Bot):
+
+![Watcher 15M Crypto](WATCHER%2015M%20CRYPTO..png)
 
 
 ### 🛠 Technologies (Main Bot)
